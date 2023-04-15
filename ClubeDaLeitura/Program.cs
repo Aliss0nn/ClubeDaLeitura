@@ -8,20 +8,8 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace ClubeDaLeitura
 {
-
-
     internal class Program
-    {
-        public static void ApresentarMensagem(string mensagem, ConsoleColor cor)
-        {
-            Console.WriteLine();
-            Console.ForegroundColor = cor;
-            Console.WriteLine(mensagem);
-            Console.ResetColor();
-            Console.ReadLine();
-        }
-
-     
+    {        
         static void Main(string[] args)
         {
             Caixa caixa = new Caixa();
@@ -46,36 +34,29 @@ namespace ClubeDaLeitura
                 switch (opcao)
                 {
                     case "1":
-                        string opcaoCadastroCaixas = Caixa.MenuPrincipalCaixas();
+                        string opcaoCadastroCaixas = TelaCaixas.MenuPrincipalCaixas();
                         //AdicionarCaixas(Caixa.caixas);
-                        //Caixa.CadastroDeCaixas(opcaoCadastroCaixas);
+                        TelaCaixas.CadastroDeCaixas(opcaoCadastroCaixas);
                         break;
 
                     case "2":
-                        string opcaoCadastroAmigos = Amigos.ApresentarMenuDosAmigos();
+                        string opcaoCadastroAmigos = TelaAmigos.ApresentarMenuDosAmigos();
                         //AdicionarAmigosAuto(Amigos.amigos);
-                        // Amigos.CadastroAmigos(opcaoCadastroAmigos);
+                        TelaAmigos.CadastroAmigos(opcaoCadastroAmigos);
                         break;
 
                     case "3":
-                        string opcaoCadastroRevista = Revista.ApresentarMenuRevista();
-                        Revista.CadastroRevista(opcaoCadastroRevista);
+                        string opcaoCadastroRevista = TelaRevista.ApresentarMenuRevista();
+                        TelaRevista.CadastroRevista(opcaoCadastroRevista);
                         break;
 
                     case "4":
                         Emprestimo.CadastrarEmprestimos();
                         break;
-
-
                 }
-
-
-
             }
-
-
         }
-
+       
 
         //    public static void AdicionarAmigosAuto(string "ArrayList AmigosAuto)
 

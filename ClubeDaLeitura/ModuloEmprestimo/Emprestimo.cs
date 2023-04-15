@@ -30,7 +30,7 @@ namespace ClubeDaLeitura.ModuloEmprestimo
             var emprestimo = new Emprestimo();
             Console.Clear();
 
-            Amigos.VisualizarAmigos(true);
+            TelaAmigos.VisualizarAmigos(true);
 
             Console.WriteLine("Qual o id do amigo que sera emprestado a revista");
             id = int.Parse(Console.ReadLine());
@@ -50,19 +50,19 @@ namespace ClubeDaLeitura.ModuloEmprestimo
 
             if (amigo.emprestado == true)
             {
-                // MostrarListaEmprestimos(emprestimpoFeitos);
+                //MostrarListaEmprestimos(emprestimpoFeitos);
                 Console.WriteLine("\nEsse amigo ja tem uma revista emprestada!");
                 Console.ReadLine();
                 return;
             }
                 Console.Clear();
 
-            Revista.VisualizarRevistas(true);
+            TelaRevista.VisualizarRevistas(true);
 
             Console.WriteLine("Qual o id da revista?");
             string nomeRevista = Console.ReadLine();
 
-            int idRevista = Revista.EncontrarRevista();
+            int idRevista = TelaRevista.EncontrarRevista();
 
             if (idRevista == 404)
             {
