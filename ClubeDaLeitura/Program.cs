@@ -35,14 +35,12 @@ namespace ClubeDaLeitura
                 switch (opcao)
                 {
                     case "1":
-                        string opcaoCadastroCaixas = telaCaixas.MenuPrincipalCaixas();
-                        //AdicionarCaixas(Caixa.caixas);
+                        string opcaoCadastroCaixas = telaCaixas.MenuPrincipalCaixas();                       
                         telaCaixas.CadastroDeCaixas(opcaoCadastroCaixas);
                         break;
 
                     case "2":
-                        string opcaoCadastroAmigos = telaAmigos.ApresentarMenuDosAmigos();
-                        //AdicionarAmigosAuto(Amigos.amigos);
+                        string opcaoCadastroAmigos = telaAmigos.ApresentarMenuDosAmigos();                       
                         telaAmigos.CadastroAmigos(opcaoCadastroAmigos);
                         break;
 
@@ -54,8 +52,6 @@ namespace ClubeDaLeitura
                     case "4":
                         telaEmprestimo.AdicionarEmprestimo();
                         break;
-
-
 
                 }
             }
