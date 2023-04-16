@@ -99,13 +99,13 @@ namespace ClubeDaLeitura.ModuloCaixas
         {
             Caixa caixa = new Caixa();
             Console.Clear();
-            Console.WriteLine("Digite a cor da caixa ");
+            Console.Write("Digite a cor da caixa: ");
             string cor = Console.ReadLine();
 
-            Console.WriteLine("Digite a etiqueta da caixa");
+            Console.Write("\nDigite a etiqueta da caixa: ");
             string etiqueta = Console.ReadLine();
 
-            Console.WriteLine("Digite o número da caixa");
+            Console.Write("\nDigite o número da caixa: ");
             int id = int.Parse(Console.ReadLine());
 
             
@@ -120,12 +120,12 @@ namespace ClubeDaLeitura.ModuloCaixas
         {            
             ArrayList caixas = caixaRepositorio.SelecionarTodos();
           
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
 
 
             Console.WriteLine("{0,-10} | {1,-40} | {2,-30}", "ID", "Cor", "Etiqueta");
 
-            Console.WriteLine("---------------------------------------------------------------------------------------");
+            Console.WriteLine("---------------------------------------------------------------------------");
 
 
             foreach (Caixa c in caixas)

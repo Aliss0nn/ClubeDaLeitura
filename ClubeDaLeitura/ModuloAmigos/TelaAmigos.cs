@@ -69,19 +69,19 @@ namespace ClubeDaLeitura.ModuloAmigos
         {       
             Console.Clear();
 
-            Console.WriteLine("Digite o nome ");
+            Console.Write("Digite o nome: ");
             string nome = Console.ReadLine();
 
-            Console.WriteLine("Digite o nome do responsável");
+            Console.Write("\nDigite o nome do responsável: ");
             string nomedoResponsavel = Console.ReadLine();
 
-            Console.WriteLine("Digite o número de telefone");
+            Console.Write("\nDigite o número de telefone: ");
             int telefone = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("Digite o Endereço");
+            Console.Write("\nDigite o Endereço: ");
             string endereco = Console.ReadLine();
 
-            Console.WriteLine("Digite o id para o seu amigo: ");
+            Console.Write("\nDigite o id para o seu amigo: ");
             int id = int.Parse(Console.ReadLine());
 
             Amigos amiguinhos = new Amigos();

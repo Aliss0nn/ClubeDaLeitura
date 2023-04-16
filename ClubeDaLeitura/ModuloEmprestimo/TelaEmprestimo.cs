@@ -15,7 +15,7 @@ namespace ClubeDaLeitura.ModuloEmprestimo
     public class TelaEmprestimo : Emprestimo
     {
         TelaAmigos telaAmigos = new TelaAmigos();
-
+        
         RepositorioAmigos repositorioAmigos = new RepositorioAmigos();
 
         RepositorioRevista repositorioRevista = new RepositorioRevista();
@@ -34,8 +34,6 @@ namespace ClubeDaLeitura.ModuloEmprestimo
            
             emprestimo.amigo = (Amigos)repositorioAmigos.SelecionarAmigoPorId(id);
            
-
-
             telarevista.VisualizarRevistas(true);
 
             Console.WriteLine("Digite o id da revista");
@@ -44,7 +42,6 @@ namespace ClubeDaLeitura.ModuloEmprestimo
             emprestimo.revista = repositorioRevista.SelecionarRevistaPorId(id);
            
             
-
             if (amigo.emprestado == true)
             {
                 Console.WriteLine("erro");

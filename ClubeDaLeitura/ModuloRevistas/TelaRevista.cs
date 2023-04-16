@@ -15,19 +15,19 @@ namespace ClubeDaLeitura.ModuloRevistas
         public Revista ObterRevista()
         {
             Console.Clear();
-            Console.WriteLine("Digite o tipo de coleção da revista");
+            Console.Write("Digite o tipo de coleção da revista: ");
             string colecao = Console.ReadLine();
 
-            Console.WriteLine("Digite o número da revista");
+            Console.Write("\nDigite o número da revista: ");
             int numero = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Digite o ano da revista");
+            Console.Write("\nDigite o ano da revista: ");
             int anoDaRevista = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Digite em qual caixa vai guardar a revista");
+            Console.Write("\nDigite em qual caixa vai guardar a revista: ");
             string caixaGuardada = Console.ReadLine();
 
-            Console.WriteLine("Qual o id da revista: ");
+            Console.Write("\nQual o id da revista: ");
             int id = int.Parse(Console.ReadLine());
 
             Revista revistinha = new Revista();
