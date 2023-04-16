@@ -10,7 +10,10 @@ namespace ClubeDaLeitura.ModuloCaixas
 {
     public class TelaCaixas : Tela
     {
-        static public string MenuPrincipalCaixas()
+        
+        CaixaRepositorio caixaRepositorio = new CaixaRepositorio();
+       
+        public string MenuPrincipalCaixas()
        {
             Console.Clear();
             Console.WriteLine();
@@ -34,7 +37,7 @@ namespace ClubeDaLeitura.ModuloCaixas
             return opcao;
        }
 
-        public static void CadastroDeCaixas(string opcaoCadastroCaixas)
+        public void CadastroDeCaixas(string opcaoCadastroCaixas)
         {
             if (opcaoCadastroCaixas == "1")
             {
@@ -58,15 +61,20 @@ namespace ClubeDaLeitura.ModuloCaixas
             }
         }
 
-        static void InserirNovaCaixa()
+        public void InserirNovaCaixa()
         {
             Caixa novacaixa = ObterCaixa();
-            CaixaRepositorio.Inserir(novacaixa);
+
+            caixaRepositorio.Inserir(novacaixa);
+
+            CaixaRepositorio caixarepositorio = new CaixaRepositorio();
+
+            caixarepositorio.Inserir(novacaixa);
 
             Tela.ApresentarMensagem("Caixa inserida com sucesso!", ConsoleColor.Green);
         }
 
-        public static void EditarCaixas()
+        public void EditarCaixas()
         {
             bool temEquipamentos = VisualizarCaixas(false);
 
@@ -79,14 +87,17 @@ namespace ClubeDaLeitura.ModuloCaixas
 
             Caixa caixaatualizada = ObterCaixa();
 
-            CaixaRepositorio.Editar(idSelecionado, caixaatualizada);
+            CaixaRepositorio caixaRepositorio = new CaixaRepositorio();
+
+            caixaRepositorio.Editar(idSelecionado, caixaatualizada);
 
             Tela.ApresentarMensagem("Equipamento editado com sucesso!", ConsoleColor.Green);
 
         }
 
-        public static Caixa ObterCaixa()
+        public Caixa ObterCaixa()
         {
+            Caixa caixa = new Caixa();
             Console.Clear();
             Console.WriteLine("Digite a cor da caixa ");
             string cor = Console.ReadLine();
@@ -97,18 +108,18 @@ namespace ClubeDaLeitura.ModuloCaixas
             Console.WriteLine("Digite o número da caixa");
             int id = int.Parse(Console.ReadLine());
 
-            Caixa caixinha = new Caixa();
-            caixinha.cor = cor;
-            caixinha.etiqueta = etiqueta;
-            caixinha.id = id;
+            
+            caixa.cor = cor;
+            caixa.etiqueta = etiqueta;
+            caixa.id = id;
 
-            return caixinha;
+            return caixa;
         }
 
-        public static bool VisualizarCaixas(bool v)
-        {
-            ArrayList caixas = CaixaRepositorio.SelecionarTodos();
-
+        public bool VisualizarCaixas(bool v)
+        {            
+            ArrayList caixas = caixaRepositorio.SelecionarTodos();
+          
             Console.ForegroundColor = ConsoleColor.Green;
 
 
@@ -127,7 +138,7 @@ namespace ClubeDaLeitura.ModuloCaixas
             return true;
         }
 
-        public static void ExcluirCaixas()
+        public void ExcluirCaixas()
         {
 
             bool temEquipamentosGravados = VisualizarCaixas(false);
@@ -139,13 +150,15 @@ namespace ClubeDaLeitura.ModuloCaixas
 
             int idSelecionado = EncontrarCaixa();
 
-            CaixaRepositorio.Excluir(idSelecionado);
+            CaixaRepositorio caixarepositorio = new CaixaRepositorio();
+
+            caixarepositorio.Excluir(idSelecionado);
 
             Tela.ApresentarMensagem("Caixa excluída com sucesso!", ConsoleColor.Green);
 
         }
 
-        public static int EncontrarCaixa()
+        public int EncontrarCaixa()
         {
             int idSelecionado;
             bool idInvalido;
@@ -156,7 +169,9 @@ namespace ClubeDaLeitura.ModuloCaixas
 
                 idSelecionado = Convert.ToInt32(Console.ReadLine());
 
-                idInvalido = CaixaRepositorio.SelecionarPorId(idSelecionado) == null;
+                CaixaRepositorio caixaRepositorio = new CaixaRepositorio();
+
+                idInvalido = caixaRepositorio.SelecionarPorId(idSelecionado) == null;
 
                 if (idInvalido)
                     Tela.ApresentarMensagem("Id inválido, tente novamente", ConsoleColor.Red);

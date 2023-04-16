@@ -10,8 +10,8 @@ namespace ClubeDaLeitura.ModuloRevistas
         public int anoDaRevista;
         public string caixaGuardada;
         public int id;
-        public bool emprestimo;
+        public bool estaAberto;
 
-        public static ArrayList revistas = new ArrayList();    
+        public  ArrayList revistas = new ArrayList();    
     }
 }

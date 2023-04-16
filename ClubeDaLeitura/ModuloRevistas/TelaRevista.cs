@@ -10,7 +10,9 @@ namespace ClubeDaLeitura.ModuloRevistas
 {
     public class TelaRevista : Tela
     {
-        public static Revista ObterRevista()
+       RepositorioRevista repositorioRevista = new RepositorioRevista();
+                
+        public Revista ObterRevista()
         {
             Console.Clear();
             Console.WriteLine("Digite o tipo de coleção da revista");
@@ -40,7 +42,7 @@ namespace ClubeDaLeitura.ModuloRevistas
 
         }
 
-        public static string ApresentarMenuRevista()
+        public string ApresentarMenuRevista()
         {
             Console.Clear();
             Console.WriteLine();
@@ -64,7 +66,7 @@ namespace ClubeDaLeitura.ModuloRevistas
 
         }
 
-        public static void CadastroRevista(string opcaoCadastroRevista)
+        public void CadastroRevista(string opcaoCadastroRevista)
         {
 
             if (opcaoCadastroRevista == "1")
@@ -88,23 +90,20 @@ namespace ClubeDaLeitura.ModuloRevistas
                 ExcluirRevista();
             }
 
-
-
-
         }
 
-        private static void InserirNovaRevista()
+        public void InserirNovaRevista()
         {
 
             Revista revista = ObterRevista();
-            RepositorioRevista.Inserir(revista);
+            repositorioRevista.Inserir(revista);
 
-            RepositorioRevista.IncrementarID();
+            repositorioRevista.IncrementarID();
 
-            Tela.ApresentarMensagem("Caixa inserida com sucesso!", ConsoleColor.Green);
+            Tela.ApresentarMensagem("Revista inserida com sucesso!", ConsoleColor.Green);
         }
-
-        private static void ExcluirRevista()
+       
+        private void ExcluirRevista()
         {
             bool temRevistasGravadas = VisualizarRevistas(false);
 
@@ -115,11 +114,12 @@ namespace ClubeDaLeitura.ModuloRevistas
 
             int idSelecionado = EncontrarRevista();
 
-            RepositorioRevista.Excluir(idSelecionado);
+            repositorioRevista.Excluir(idSelecionado);
 
             Tela.ApresentarMensagem("Caixa excluída com sucesso!", ConsoleColor.Green);
         }
-        public static int EncontrarRevista()
+
+        public int EncontrarRevista()
         {
             int idSelecionado;
             bool idInvalido;
@@ -130,7 +130,7 @@ namespace ClubeDaLeitura.ModuloRevistas
 
                 idSelecionado = Convert.ToInt32(Console.ReadLine());
 
-                idInvalido = RepositorioRevista.SelecionarRevistaPorId(idSelecionado) == null;
+                idInvalido = repositorioRevista.SelecionarRevistaPorId(idSelecionado) == null;
 
                 if (idInvalido)
                     Tela.ApresentarMensagem("Id inválido, tente novamente", ConsoleColor.Red);
@@ -140,7 +140,7 @@ namespace ClubeDaLeitura.ModuloRevistas
             return idSelecionado;
         }
 
-        private static void EditarRevistas()
+        private void EditarRevistas()
         {
             bool TemCaixas = VisualizarRevistas(false);
 
@@ -152,15 +152,15 @@ namespace ClubeDaLeitura.ModuloRevistas
             int idSelecionado = EncontrarRevista();
 
             Revista revistaAtualizada = ObterRevista();
-            RepositorioRevista.Editar(idSelecionado, revistaAtualizada);
+            repositorioRevista.Editar(idSelecionado, revistaAtualizada);
 
             Tela.ApresentarMensagem("Revista editada com sucesso!", ConsoleColor.Green);
         }
 
-        public static bool VisualizarRevistas(bool v)
+        public bool VisualizarRevistas(bool v)
         {
 
-            ArrayList revistas = RepositorioRevista.Selecionartodos();
+            ArrayList revistas = repositorioRevista.Selecionartodos();
 
             Console.ForegroundColor = ConsoleColor.DarkBlue;
 
@@ -180,11 +180,6 @@ namespace ClubeDaLeitura.ModuloRevistas
 
             return true;
         }
-
-
-        
-
-
 
     }
 }

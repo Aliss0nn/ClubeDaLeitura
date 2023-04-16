@@ -6,10 +6,10 @@ namespace ClubeDaLeitura.ModuloCaixas
 {
     public class Caixa // Entidade
     {
-        public static ArrayList caixas = new ArrayList();
+        public ArrayList caixas = new ArrayList();
         public string cor = "";
         public string etiqueta;
-        public int id;
+        public int id;      
     }
 }
 

@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace ClubeDaLeitura.ModuloAmigos
 {
-    internal class RepositorioAmigos
+    internal class RepositorioAmigos 
     {
-        public static int contadorAmigos = 1;
+        public int contadorAmigos = 1;
 
-        public static ArrayList amigos = new ArrayList();
+        public ArrayList amigos = new ArrayList();
 
-        public static Amigos SelecionarAmigoPorId(int id)
+        public Amigos SelecionarAmigoPorId(int id)
         {
-            Amigos amigo = null;
+            Amigos amigo = new Amigos();
 
             foreach (Amigos a in amigos)
             {
@@ -29,7 +29,7 @@ namespace ClubeDaLeitura.ModuloAmigos
             return amigo;
         }
 
-        public static void Editar(int id, Amigos amigosatualizado)
+        public void Editar(int id, Amigos amigosatualizado)
         {
             Amigos amigo = SelecionarAmigoPorId(id);
             amigo.nome = amigo.nome;
@@ -39,24 +39,24 @@ namespace ClubeDaLeitura.ModuloAmigos
             amigo.id = id;
         }
 
-        public static void Inserir(Amigos amiguinhos)
+        public void Inserir(Amigos amiguinhos)
         {
             amigos.Add(amiguinhos);
 
             IncrementarIdAmigo();
         }
 
-        public static ArrayList SelecionarTodos()
+        public ArrayList SelecionarTodos()
         {
             return amigos;
         }
 
-        public static void IncrementarIdAmigo()
+        public void IncrementarIdAmigo()
         {
             contadorAmigos++;
         }
 
-        public static void Excluir(int idSelecionado)
+        public void Excluir(int idSelecionado)
         {
             Amigos amigo = SelecionarAmigoPorId(idSelecionado);
             amigos.Remove(amigo);

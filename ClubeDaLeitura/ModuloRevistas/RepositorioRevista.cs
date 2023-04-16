@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace ClubeDaLeitura.ModuloRevistas
 {
-    internal class RepositorioRevista
+    public class RepositorioRevista
     {
-        public static ArrayList revistas = new ArrayList();
-        public static int contadorDeRevista = 1;
+        public ArrayList revistas = new ArrayList();
+        public int contadorDeRevista = 1;
         
-        public static void IncrementarID()
+        public void IncrementarID()
         {
             contadorDeRevista++;
         }
 
-        public static Revista SelecionarRevistaPorId(int id)
+        public Revista SelecionarRevistaPorId(int id)
         {
             Revista revista = null;
 
@@ -34,7 +34,7 @@ namespace ClubeDaLeitura.ModuloRevistas
             return revista;
         }
 
-        public static void Editar(int id, Revista revistaAtualizada)
+        public void Editar(int id, Revista revistaAtualizada)
             
         {
             
@@ -46,20 +46,20 @@ namespace ClubeDaLeitura.ModuloRevistas
             revista.id = id;
         }
 
-        public static void Excluir(int idSelecionado)
+        public void Excluir(int idSelecionado)
         {
             Revista revista = SelecionarRevistaPorId(idSelecionado);
             revistas.Remove(revista);
         }
 
-        public static void Inserir(Revista revistinha)
+        public void Inserir(Revista revistinha)
         {
             revistas.Add(revistinha);
 
             IncrementarID();
         }
 
-        public static ArrayList Selecionartodos()
+        public ArrayList Selecionartodos()
         {
             return revistas;
         }
