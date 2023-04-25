@@ -10,7 +10,8 @@ namespace ClubeDaLeitura.ModuloRevistas
 {
     public class TelaRevista : Tela
     {
-       RepositorioRevista repositorioRevista = new RepositorioRevista();
+        RepositorioRevista repositorioRevista = new RepositorioRevista();
+        Repositorio repositorio = new Repositorio();
                 
         public Revista ObterRevista()
         {
@@ -98,7 +99,7 @@ namespace ClubeDaLeitura.ModuloRevistas
             Revista revista = ObterRevista();
             repositorioRevista.Inserir(revista);
 
-            repositorioRevista.IncrementarID();
+            //repositorio.IncrementarID();
 
             Tela.ApresentarMensagem("Revista inserida com sucesso!", ConsoleColor.Green);
         }

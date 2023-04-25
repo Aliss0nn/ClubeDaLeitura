@@ -22,8 +22,5 @@ namespace ClubeDaLeitura.ModuloEmprestimo
         public DateTime dataDoEmprestimo;
         public DateTime dataDaDevolucao;
         public bool estaAberto;
-
-      
-
     }
 }

@@ -35,7 +35,7 @@ namespace ClubeDaLeitura
                 switch (opcao)
                 {
                     case "1":
-                        string opcaoCadastroCaixas = telaCaixas.MenuPrincipalCaixas();                       
+                        string opcaoCadastroCaixas = telaCaixas.MenuPrincipal();                       
                         telaCaixas.CadastroDeCaixas(opcaoCadastroCaixas);
                         break;
 

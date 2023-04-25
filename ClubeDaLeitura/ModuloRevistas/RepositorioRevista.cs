@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClubeDaLeitura.TelaCompartilhada;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,22 +8,22 @@ using System.Threading.Tasks;
 
 namespace ClubeDaLeitura.ModuloRevistas
 {
-    public class RepositorioRevista
+    public class RepositorioRevista : Repositorio
     {
-        public ArrayList revistas = new ArrayList();
-        public int contadorDeRevista = 1;
-        
-        public void IncrementarID()
-        {
-            contadorDeRevista++;
-        }
+        //public ArrayList listaregistros = new ArrayList();
+        //public int ContadorDeId = 1;
+
+        //public void IncrementarID()
+        //{
+        //    ContadorDeId++;
+        //}
 
         public Revista SelecionarRevistaPorId(int id)
         {
             Revista revista = null;
 
 
-            foreach (Revista r in revistas)
+            foreach (Revista r in listaregistros)
             {
                 if (r.id == id)
                 {
@@ -35,13 +36,13 @@ namespace ClubeDaLeitura.ModuloRevistas
         }
 
         public void Editar(int id, Revista revistaAtualizada)
-            
+
         {
-            
+
             Revista revista = SelecionarRevistaPorId(id);
             revista.colecao = revistaAtualizada.colecao;
             revista.numerocolecao = revistaAtualizada.numerocolecao;
-            revista.anoDaRevista = revistaAtualizada.anoDaRevista ;
+            revista.anoDaRevista = revistaAtualizada.anoDaRevista;
             revista.caixaGuardada = revistaAtualizada.caixaGuardada;
             revista.id = id;
         }
@@ -49,19 +50,19 @@ namespace ClubeDaLeitura.ModuloRevistas
         public void Excluir(int idSelecionado)
         {
             Revista revista = SelecionarRevistaPorId(idSelecionado);
-            revistas.Remove(revista);
+            listaregistros.Remove(revista);
         }
 
-        public void Inserir(Revista revistinha)
-        {
-            revistas.Add(revistinha);
+        //public void Inserir(Entidade registros)
+        //{
+        //    listaregistros.Add(registros);
 
-            IncrementarID();
-        }
+        //    IncrementarID();
+        //}
 
         public ArrayList Selecionartodos()
         {
-            return revistas;
+            return listaregistros;
         }
     }
 }

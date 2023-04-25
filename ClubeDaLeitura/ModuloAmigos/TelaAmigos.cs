@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ClubeDaLeitura.ModuloAmigos
 {
-    public class TelaAmigos : Tela
+    public class TelaAmigos : Amigos
     {
-
         RepositorioAmigos repositorioAmigos = new RepositorioAmigos();
 
         public string ApresentarMenuDosAmigos()
@@ -64,7 +64,7 @@ namespace ClubeDaLeitura.ModuloAmigos
             }
         }
 
-        public  Amigos ObterAmigos()
+        public Entidade ObterAmigos()
 
         {       
             Console.Clear();
@@ -84,7 +84,7 @@ namespace ClubeDaLeitura.ModuloAmigos
             Console.Write("\nDigite o id para o seu amigo: ");
             int id = int.Parse(Console.ReadLine());
 
-            Amigos amiguinhos = new Amigos();
+            Entidade amiguinhos = new Entidade();
             amiguinhos.nome = nome;
             amiguinhos.nomedoResponsavel = nomedoResponsavel;
             amiguinhos.telefone = telefone;
@@ -106,7 +106,7 @@ namespace ClubeDaLeitura.ModuloAmigos
 
             int idSelecionado = EncontrarAmigo();
 
-            Amigos amigoAtualizado = ObterAmigos();
+            Entidade amigoAtualizado = ObterAmigos();
           
             repositorioAmigos.Editar(idSelecionado, amigoAtualizado);
           
@@ -116,11 +116,12 @@ namespace ClubeDaLeitura.ModuloAmigos
       
         public void InserirNovoAmigo()
         {           
-            Amigos novoamigo = ObterAmigos();
+            Entidade novoamigo = ObterAmigos();
                       
             repositorioAmigos.Inserir(novoamigo);
-            
-            repositorioAmigos.IncrementarIdAmigo();
+           
+
+            repositorioAmigos.IncrementarId();
 
             Tela.ApresentarMensagem("Caixa inserida com sucesso!", ConsoleColor.Green);
         }
@@ -137,7 +138,7 @@ namespace ClubeDaLeitura.ModuloAmigos
             int idSelecionado = EncontrarAmigo();
 
             RepositorioAmigos repositorioAmigos = new RepositorioAmigos();
-            
+
             repositorioAmigos.Excluir(idSelecionado);
 
             Tela.ApresentarMensagem("Amigo excluído com sucesso!", ConsoleColor.Green);
@@ -157,7 +158,7 @@ namespace ClubeDaLeitura.ModuloAmigos
 
                 idSelecionado = Convert.ToInt32(Console.ReadLine());
 
-                idInvalido = repositorioAmigos.SelecionarAmigoPorId(idSelecionado) == null;
+                idInvalido = repositorioAmigos.SelecionarPorId(idSelecionado) == null;
 
                 if (idInvalido)
                     Tela.ApresentarMensagem("Id inválido, tente novamente", ConsoleColor.Red);
@@ -170,18 +171,14 @@ namespace ClubeDaLeitura.ModuloAmigos
         }
 
         public bool VisualizarAmigos(bool v)
-        {
-            
+        {          
             ArrayList amigos = repositorioAmigos.SelecionarTodos();
 
             Console.ForegroundColor = ConsoleColor.DarkYellow;
 
-
             Console.WriteLine("{0,-10} | {1,-40} | {2,-30} | {3,-20}", "ID", "Nome", "Nome do Resposável", "Endereço");
 
-
             Console.WriteLine("----------------------------------------------------------------------------------------------------");
-
 
             foreach (Amigos a in amigos)
             {
@@ -193,5 +190,4 @@ namespace ClubeDaLeitura.ModuloAmigos
             return true;
         }
     }
-
 }

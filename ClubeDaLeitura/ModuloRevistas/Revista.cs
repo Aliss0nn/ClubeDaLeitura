@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using ClubeDaLeitura.TelaCompartilhada;
+using System.Collections;
 
 namespace ClubeDaLeitura.ModuloRevistas
 {
-    public class Revista
+    public class Revista : Entidade
     {
         public string colecao = "";
 
@@ -12,6 +13,20 @@ namespace ClubeDaLeitura.ModuloRevistas
         public int id;
         public bool estaAberto;
 
-        public  ArrayList revistas = new ArrayList();    
+        public  ArrayList revistas = new ArrayList();
+
+
+        public override void Atualizar(Entidade registroAtualizado)
+        {
+          
+
+
+        }
+
+
+
+
+
+
     }
 }
